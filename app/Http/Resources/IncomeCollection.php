@@ -14,6 +14,12 @@ class IncomeCollection extends ResourceCollection
      */
     public function toArray($request)
     {
-        return parent::toArray($request);
+        return [
+            'income_date' => $this->income_date,
+            'note' => $this->note,
+            'amount' => $this->amount,
+            'status' => $this->status,
+            'company_project_id' => $this->company_project_id
+        ];
     }
 }
