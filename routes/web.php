@@ -14,17 +14,19 @@ use App\Http\Controllers\ProductController;
 |
 */
 
-Route::get('/', function () {
-    return view('layouts.index');
-});
+
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+
 
 Route::group([
     'middleware' => ['auth']
 ], function(){
+    Route::get('/', function () {
+        return view('layouts.index');
+    });
+    Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
     Route::get('/product', [ProductController::class, 'index'])->name('product.index');
 });
 
